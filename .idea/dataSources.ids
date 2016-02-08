@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - java@localhost" uuid="4e52dcfd-f9d6-4a65-8a85-9cab6b55e3e3">
+    <database-info product="MySQL" version="5.7.10-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="java"/>
+      <table id="2" parent="1" name="cat">
+        <comment>Категории товаров</comment>
+      </table>
+      <table id="3" parent="1" name="prod">
+        <comment>Товары</comment>
+      </table>
+      <column id="4" parent="2" name="ID">
+        <comment>Идентификатор категории товаров (PK)</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="5" parent="2" name="NAME">
+        <comment>Уникальное название товара</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="6" parent="2" name="NAME_UNIQUE">
+        <columns>NAME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="7" parent="2" name="NAME_UNIQUE">
+        <columns>NAME</columns>
+        <underlying-index>NAME_UNIQUE</underlying-index>
+      </key>
+      <key id="8" parent="2" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="9" parent="3" name="ID">
+        <comment>Идентификатор товара (PK)</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="10" parent="3" name="CAT_ID">
+        <comment>Идентификатор категории товаров (FK)</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="11" parent="3" name="NAME">
+        <comment>Название товара</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="12" parent="3" name="PRICE">
+        <comment>Цена товара</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(16,2)</data-type>
+      </column>
+      <index id="13" parent="3" name="CAT_ID_idx">
+        <columns>CAT_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="14" parent="3" name="NAME_UNIQUE">
+        <columns>NAME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="15" parent="3" name="NAME_UNIQUE">
+        <columns>NAME</columns>
+        <underlying-index>NAME_UNIQUE</underlying-index>
+      </key>
+      <key id="16" parent="3" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="17" parent="3" name="CAT_ID">
+        <columns>CAT_ID</columns>
+        <ref-key>~.cat.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>
